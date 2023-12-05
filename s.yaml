@@ -19,12 +19,12 @@ name: hello-world-app
 # access 是当前应用所需要的密钥信息配置：
 # 密钥配置可以参考：https://www.serverless-devs.com/serverless-devs/command/config
 # 密钥使用顺序可以参考：https://www.serverless-devs.com/serverless-devs/tool#密钥使用顺序与规范
-access: "{{ access }}"
+access: default
 
 vars: # 全局变量
-  region: "{{ region }}"
+  region: cn-beijing
   service:
-    name: "{{ serviceName }}"
+    name: hello-world-service
     description: 'hello world by serverless devs'
 
 services:
@@ -48,10 +48,10 @@ services:
     #      post-deploy: # 在deploy之后运行
     #        - component: fc versions publish # 要运行的命令行
     props:
-      region: ${vars.region}              # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
-      service: ${vars.service}
+      region: cn-beijing             # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
+      service: hello-world-service
       function:
-        name: "{{ functionName }}"
+        name: cpp-event-function
         description: 'hello world by serverless devs'
         runtime: go1
         codeUri: ./code/target
